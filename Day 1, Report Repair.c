@@ -13,9 +13,7 @@ int main() {
     #if defined PART_TWO
 		int x;
 	#endif
-    printf("Now starting...");
     for (z = 0; z < 200; z++) {
-    	printf("Iteration %d \n", z);
         for (y = 0; y < 200; y++) {
         	#if !defined PART_TWO
             if ((expenses[z] + expenses[y]) == 2020) {
