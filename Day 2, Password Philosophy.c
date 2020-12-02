@@ -19,10 +19,10 @@ main() {
 	while(fgets(buffer, 100, pw)) {
 		// Now reading contains the number of the character we're reading.
 		nowReading = 0;
-		// Space to write contains the number at which we're writing to the readNum string, which then gets converted to a number-
+		// Space to write contains the number at which we're writing to the readNum string, which then gets converted to a number
 		spaceToWrite = 0;
 		foundOcurrences = 0;
-		// Read the number before '-' and store it in a tring
+		// Read the number before '-' and store it in a string, then store in int
 		read = buffer[0];
 		while (read != '-') {
 			readNum[spaceToWrite] = read;
@@ -33,7 +33,7 @@ main() {
 		readNum[spaceToWrite] = '\0';
 		minOcurrences = atoi(readNum);
 		spaceToWrite = 0;
-		// Scroll through the string, read the number after '-'
+		// Scroll through the string, read the number after '-', store in int
 		++nowReading;
 		read = buffer[nowReading];
 		while (read != ' ') {
@@ -54,8 +54,7 @@ main() {
 
 
 
-		// If we're doing part one, scroll through the string and find all the ocurrences of the character we're looking for
-		// Then compare with the previous numbers and check if the password is valid
+		// If we're doing part two, just check for password validity as stated in the website's instructions.
 		#if defined PART_TWO
 		foundOcurrences = 0;
 		if (buffer[minOcurrences + nowReading] == lookingFor) ++foundOcurrences;
@@ -64,7 +63,8 @@ main() {
 
 
 
-		// If we're doing part two, just check for password validity as stated in the website's instructions.
+		// If we're doing part one, scroll through the string and find all the ocurrences of the character we're looking for
+		// Then compare with the previous numbers and check if the password is valid
 		#else
 		while (read != '\0') {
 			if (read == lookingFor) ++foundOcurrences;
