@@ -65,7 +65,9 @@ void ScanPassport(char buffer[100], bool Passport[PASSPORT_FIELDS]) {
 	int readPos = 0, i, x;
 	char reading[4], fieldInput[16];
 	reading[3] = '\0';
+	// Read all of the fields in the line
 	while (buffer[readPos] != '\0') {
+		// If we find the delimiter, then check for the field data and validate
 		if (buffer[readPos] == ':') {
 			x = 0;
 			++readPos;
@@ -98,12 +100,14 @@ void ValidateField(char reading[4], char fieldInput[16], bool Passport[PASSPORT_
 	int i, aux;
 	for (i = 0; i < PASSPORT_FIELDS; i++) {
 		if (strncmp(reading, PassportFieldsStr[i], 3) == 0) {
+			// If we find the field, check for it
 			if (FieldHasValidData(i, fieldInput)) Passport[i] = true;
 			break;
 		}
 	}
 }
 
+// This function just checks that all of the passport fields were set to true when validated.
 bool IsPassportValid(bool Passport[PASSPORT_FIELDS]) {
 	int i;
 	for (i = 0; i < PASSPORT_FIELDS; i++) {
@@ -112,6 +116,7 @@ bool IsPassportValid(bool Passport[PASSPORT_FIELDS]) {
 	return true;
 }
 
+// This function just checks the passport fields have valid data.
 bool FieldHasValidData(int i, char fieldInput[16]) {
 	char ValidEyeColours[7][4] = {
 		"amb",
@@ -169,6 +174,7 @@ bool FieldHasValidData(int i, char fieldInput[16]) {
 	return true;
 }
 
+// This function does some cursed string manipulation to check if a height is valid.
 bool IsValidHeight(char heightStr[16]) {
 	char numContainer[5];
 	int i = 0;
