@@ -6,3 +6,5 @@ Nothing to point out. I'm doing them in C. I'm trying to solve the problems with
 Criticism is VERY welcome!
 
 EDIT: I have abandoned this because I am currently very busy. I'll probably finish the rest on late december/january!
+
+EDIT 2: No, I won't
